@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+pydantic
+scikit-learn
+transformers   # For NLP model like BERT or GPT
+spacy          # For language processing tasks
+python-dotenv

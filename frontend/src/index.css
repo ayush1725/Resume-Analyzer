@@ -1,0 +1,113 @@
+:root {
+  --primary-color: #646cff; /* Primary color */
+  --primary-hover: #535bf2; /* Primary hover color */
+  --bg-color-dark: #242424; /* Dark background */
+  --bg-color-light: #ffffff; /* Light background */
+  --text-color-dark: rgba(255, 255, 255, 0.87); /* Dark mode text color */
+  --text-color-light: #213547; /* Light mode text color */
+  --accent-color: #ff7e67; /* Accent color for highlights */
+
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: var(--text-color-dark);
+  background-color: var(--bg-color-dark);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Global body styles */
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(145deg, #2e2e2e, #1a1a1a); /* Dark gradient background */
+  transition: background 0.5s ease-in-out;
+}
+
+/* Link styles */
+a {
+  font-weight: 500;
+  color: var(--primary-color); /* Primary link color */
+  text-decoration: none;
+  transition: color 0.3s ease; /* Smooth transition on hover */
+}
+
+a:hover {
+  color: var(--primary-hover); /* Hover effect */
+}
+
+/* Heading styles */
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  animation: fadeInSlide 1s ease forwards;
+}
+
+/* Button styles */
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.4em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a; /* Dark button background */
+  color: var(--text-color-dark);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease; /* Smooth transitions for hover/focus */
+}
+
+button:hover {
+  border-color: var(--primary-color); /* Border color on hover */
+  background-color: var(--primary-hover); /* Button hover color */
+  color: white; /* Text color on hover */
+  transform: translateY(-2px); /* Button lift effect */
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* Animation for heading */
+@keyframes fadeInSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Light mode styles */
+@media (prefers-color-scheme: light) {
+  :root {
+    color: var(--text-color-light);
+    background-color: var(--bg-color-light);
+  }
+
+  body {
+    background: linear-gradient(145deg, #f0f0f0, #ffffff); /* Light gradient background */
+  }
+
+  button {
+    background-color: #f9f9f9; /* Light button background */
+    color: var(--text-color-light);
+  }
+
+  a:hover {
+    color: #747bff; /* Light mode hover color */
+  }
+}
