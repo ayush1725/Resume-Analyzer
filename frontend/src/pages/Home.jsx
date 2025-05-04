@@ -1,47 +1,55 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
+import "./Home.css";
 
 function Home() {
-  const [email, setEmail] = useState("");
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const token = localStorage.getItem("access_token");
-        const res = await axios.get("http://localhost:8000/me/", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        setEmail(res.data.email);
-      } catch (err) {
-        navigate("/login");
-      }
-    };
-
-    fetchUser();
-  }, []);
-
-  const handleLogout = () => {
-    localStorage.removeItem("access_token");
-    navigate("/login");
-  };
-
   return (
-    <div className="container">
-      <form style={{ textAlign: "center" }}>
-        <h2 style={{ color: "var(--primary)", marginBottom: "10px" }}>
-          Welcome!
-        </h2>
-        <p style={{ marginBottom: "20px" }}>
-          Logged in as <strong>{email}</strong>
+    <div className="home-container">
+      {/* Header Section */}
+      <header className="home-header">
+        <h1 className="home-title">Welcome to Resume Analyzer</h1>
+        <p className="home-description">
+          An AI-powered tool that helps you optimize your resume by analyzing it against job descriptions.
         </p>
-        <button type="button" onClick={handleLogout}>
-          Logout
-        </button>
-      </form>
+      </header>
+
+      {/* Feature Highlights Section */}
+      <section className="home-features">
+        <div className="feature-item">
+          <i className="feature-icon fas fa-upload"></i>
+          <h3>Upload Your Resume</h3>
+          <p>
+            Simply upload your resume and let our AI analyze it against relevant job descriptions.
+          </p>
+        </div>
+        <div className="feature-item">
+          <i className="feature-icon fas fa-comments"></i>
+          <h3>Get Personalized Feedback</h3>
+          <p>
+            Receive tailored feedback on your resume, including skills match, missing keywords, and overall compatibility with the job description.
+          </p>
+        </div>
+        <div className="feature-item">
+          <i className="feature-icon fas fa-chart-line"></i>
+          <h3>Track Progress</h3>
+          <p>
+            Keep track of your past uploads, view scores, and improve your resume over time.
+          </p>
+        </div>
+      </section>
+
+      {/* Call to Action Section */}
+      <section className="cta-section">
+        <h2>Ready to optimize your resume?</h2>
+        <Link to="/upload" className="cta-button">
+          Upload Your Resume
+        </Link>
+      </section>
+
+      {/* Footer Section */}
+      <footer className="home-footer">
+        <p>© 2025 Resume Analyzer. All Rights Reserved.</p>
+      </footer>
     </div>
   );
 }

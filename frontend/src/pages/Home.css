@@ -1,0 +1,123 @@
+/* General Styles */
+.home-container {
+    font-family: 'Arial', sans-serif;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .home-header {
+    text-align: center;
+    margin-bottom: 60px; /* Increased margin-bottom */
+    padding: 40px 0; /* Added padding for more space */
+    animation: fadeIn 2s ease-in;
+  }
+  
+  .home-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px; /* Increased margin-bottom */
+  }
+  
+  .home-description {
+    font-size: 1.4rem; /* Slightly increased font size for better readability */
+    color: #555;
+    margin-bottom: 20px; /* Increased margin-bottom */
+    padding: 10px 0; /* Added padding for extra space */
+  }
+  
+  /* Feature Highlights Section */
+  .home-features {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+  }
+  
+  .feature-item {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+    margin: 10px;
+    border: 2px solid #007BFF;
+    border-radius: 15px;
+    background-color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .feature-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    background-color: #f4f8ff;
+  }
+  
+  .feature-icon {
+    font-size: 3rem;
+    color: #007BFF;
+    margin-bottom: 15px;
+    transition: color 0.3s ease;
+  }
+  
+  .feature-item:hover .feature-icon {
+    color: #0056b3;
+  }
+  
+  .feature-item h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .feature-item p {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  /* Call to Action Section */
+  .cta-section {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .cta-section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .cta-button {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    color: white;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cta-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Footer Section */
+  .home-footer {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #777;
+    margin-top: 60px;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  

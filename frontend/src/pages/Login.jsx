@@ -1,23 +1,30 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./Login.css"; // Includes updated gradient and animations
+import Popup from "./Popup"; // Import Popup component
+import "./Login.css";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [showPopup, setShowPopup] = useState(false); // State for showing popup
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:8000/login/", {
+      const res = await axios.post("http://127.0.0.1:8000/login/", {
         email,
         password,
       });
+      // Store the JWT token in localStorage
       localStorage.setItem("access_token", res.data.access_token);
-      navigate("/upload");
+      setShowPopup(true); // Show popup on successful login
+      setTimeout(() => {
+        setShowPopup(false);
+        navigate("/home"); // Redirect to home after login
+      }, 2000);
     } catch (err) {
       setError("Invalid credentials. Please try again.");
     }
@@ -57,6 +64,7 @@ function Login() {
           Don't have an account? <a href="/signup">Sign Up</a>
         </p>
       </div>
+      {showPopup && <Popup message="Login Successful!" onClose={() => setShowPopup(false)} />}
     </div>
   );
 }

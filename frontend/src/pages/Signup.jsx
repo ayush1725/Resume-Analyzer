@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import Popup from "./Popup"; 
 import "./Signup.css";
 
 function Signup() {
@@ -7,22 +9,34 @@ function Signup() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const [showPopup, setShowPopup] = useState(false); // State for showing popup
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
       setError("Passwords do not match.");
     } else {
-      // Simulate signup logic or call your API here
-      navigate("/login");
+      try {
+        const res = await axios.post("http://127.0.0.1:8000/signup/", {
+          email,
+          password,
+        });
+        setShowPopup(true); // Show popup on successful signup
+        setTimeout(() => {
+          setShowPopup(false);
+          navigate("/login"); // Navigate after a brief delay
+        }, 2000);
+      } catch (err) {
+        setError("Error signing up. Please try again.");
+      }
     }
   };
 
   return (
     <div className="signup-container">
       <div className="signup-card">
-        <h2>Sign Up</h2>
+        <h2 className="signup-title">Sign Up</h2>
         <form onSubmit={handleSubmit} className="signup-form">
           <div className="input-group">
             <label htmlFor="email">Email</label>
@@ -32,6 +46,7 @@ function Signup() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
+              required
             />
           </div>
           <div className="input-group">
@@ -42,6 +57,7 @@ function Signup() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"
+              required
             />
           </div>
           <div className="input-group">
@@ -52,6 +68,7 @@ function Signup() {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               placeholder="Confirm your password"
+              required
             />
           </div>
           {error && <p className="error">{error}</p>}
@@ -61,6 +78,7 @@ function Signup() {
           Already have an account? <a href="/login">Login</a>
         </p>
       </div>
+      {showPopup && <Popup message="Signup Successful!" onClose={() => setShowPopup(false)} />}
     </div>
   );
 }
