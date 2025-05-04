@@ -28,11 +28,6 @@ An AI-powered web application that analyzes resumes and matches them with job de
 ### Database:
 - **MongoDB**: For storing user data, resumes, feedback scores, and analysis results.
 
-### Additional Tools:
-- **GitHub Actions**: For CI/CD pipeline setup to automate deployment and testing.
-- **Jenkins**: Integrated for continuous integration workflows.
-- **Socket.IO**: For real-time communication between the frontend and backend.
-
 ## Working Process
 
 1. **Resume Parsing & Summarization**:
@@ -86,5 +81,5 @@ An AI-powered web application that analyzes resumes and matches them with job de
 ---
 Feel free to fork the repository, open issues, or submit pull requests. If you have suggestions for improvements or new features, don’t hesitate to contribute!
 ### License:
----
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
