@@ -1,6 +1,6 @@
 from sentence_transformers import SentenceTransformer, util
 
-# Load the pre-trained SentenceTransformer model
+# Load the trained SentenceTransformer model
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
 def calculate_similarity(resume_text, job_text):
